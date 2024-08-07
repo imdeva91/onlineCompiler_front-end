@@ -7,16 +7,7 @@ import Loader from "../loader/Loader";
 
 const DisplayCode = ({ codes }) => {
   const [copy, setCopy] = useState(null);
-  const codeString = `import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-const Component = () => {
-  const codeString = '(num) => num + 1';
-  return (
-    <SyntaxHighlighter language="javascript" style={docco}>
-      {codeString}
-    </SyntaxHighlighter>
-  );
-};`;
+  
 
   return (
     <div className="w-[100%] h-[100vh] ">

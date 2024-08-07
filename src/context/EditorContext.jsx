@@ -32,7 +32,7 @@ useEffect(()=>{
 useEffect(()=>{
   const tocken = sessionStorage.getItem("tocken")
   setTocken(tocken)
-},[])
+},[user])
 
   return (
     <editor.Provider
