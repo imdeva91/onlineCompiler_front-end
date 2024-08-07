@@ -1,0 +1,10 @@
+.register input{
+    padding: 7px 10px;
+    margin: 3px 0px;
+    border: none;
+    border-radius: 7px;
+    outline: none;
+}
+.register label{
+    padding-left: 5px;
+}

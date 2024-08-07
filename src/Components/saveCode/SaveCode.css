@@ -1,0 +1,21 @@
+.savecode input{
+    padding: 10px 10px;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    margin-bottom: 7px;
+
+}
+.savecode textarea{
+    padding: 4px 10px;
+    height: 150px;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    margin-bottom: 3px;
+
+
+}
+.savecode label{
+    font-size: 18px;
+}
