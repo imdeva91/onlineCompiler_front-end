@@ -5,12 +5,8 @@ import * as yup from "yup";
 import "./SaveCode.css";
 import { GoX } from "react-icons/go";
 import { editor } from "../../context/EditorContext";
-import { Radio, RadioGroup } from "@headlessui/react";
-import axios from "axios";
-import instance from "../../axios_instance";
 import Axiosinstance from "../../axios_instance";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -22,7 +18,6 @@ const schema = yup
 
 const SaveCode = () => {
   const { setOnSave, value,language } = useContext(editor);
-  // const navigate = useNavigate()
   const code = value;
   const {
     register,

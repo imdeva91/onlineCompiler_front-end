@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { CODE_SNIPPETS } from "../Constant";
 import { executeCode } from "../api";
+import Axiosinstance from "../axios_instance";
 
 export const editor = createContext();
 
@@ -13,7 +14,7 @@ const EditorContext = ({ children }) => {
   const [onSave, setOnSave] = useState(false);
   const [user, setUser] = useState(null);
   const [tocken, setTocken] = useState("null");
-  const [userCodeCount,setUserCodeCount] = useState(0)
+  const [userAllCode,setUserAllCode] = useState(null)
 
   const toggleTheam =(prev)=>{
     setTheam((prev)=> theam === "dark" ? "white":"dark")
@@ -39,6 +40,19 @@ useEffect(()=>{
   setTocken(tocken)
 },[user])
 
+
+const fetchUserAllCode =async()=>{
+  const response = await Axiosinstance.get("/user/user-all-code")
+  setUserAllCode(response.data.data)
+}
+useEffect(()=>{
+ 
+  fetchUserAllCode()
+  // console.log(codes?.length)
+  // setUserCodeCount(codes?.length)
+
+},[])
+
   return (
     <editor.Provider
       value={{
@@ -55,9 +69,9 @@ useEffect(()=>{
         tocken,
         theam,
         toggleTheam,
-        userCodeCount,
-        setUserCodeCount,
-        language
+        language,
+        userAllCode,
+        fetchUserAllCode
       }}
     >
       {children}

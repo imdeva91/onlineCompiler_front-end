@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import profile from "../../assets/profile.svg";
-import { RiUserSearchLine } from "react-icons/ri";
 import { FaUserTie } from "react-icons/fa";
 import { MdAlternateEmail, MdEmail } from "react-icons/md";
 import { editor } from "../../context/EditorContext";
 
 const Profile = () => {
-  const {user,userCodeCount} = useContext(editor)
-  console.log(userCodeCount)
+  const {user,userAllCode} = useContext(editor)
   return (
     <div className="w-[100%] h-[100%] flex ">
       <div className="w-[40vw] flex justify-center mt-20">
@@ -39,7 +37,7 @@ const Profile = () => {
         <div className="border-b py-2">Contributions</div>
         <div className="flex items-center gap-7 px-10 text-xl">
           <div className="flex flex-col items-center ">
-            <h1>{userCodeCount}</h1>
+            <h1>{userAllCode ? userAllCode?.length :0}</h1>
             <h1>Code</h1>
           </div>
           <div className="flex flex-col items-center">

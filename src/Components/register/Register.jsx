@@ -5,7 +5,6 @@ import "./Register.css"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import axios from 'axios'
 import { toast } from 'react-toastify'
 import Axiosinstance from '../../axios_instance'
 import { editor } from '../../context/EditorContext'
@@ -35,7 +34,6 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),

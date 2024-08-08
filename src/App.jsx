@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './Layout/Layout'
 import Home from './pages/home/Home'
@@ -8,8 +8,10 @@ import SearchPage from './pages/search/SearchPage'
 import MyAccount from './pages/myAccount/MyAccount'
 import Profile from './Components/profile/Profile'
 import Code from './pages/code/Code'
+import { editor } from './context/EditorContext'
 
 const App = () => {
+  const {fetchUserAllCode} = useContext(editor)
 
 const router = createBrowserRouter([
   {
@@ -39,7 +41,10 @@ const router = createBrowserRouter([
         children:[
           {
             path:"/user",
-            element:<Profile/>
+            element:<Profile/>,
+            // loader: async()=>{
+            //   fetchUserAllCode()
+            // }
           },{
             path:"code",
             element:<Code/>
