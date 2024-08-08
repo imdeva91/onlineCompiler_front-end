@@ -39,7 +39,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const response = await Axiosinstance.post("/user/login", data);
-      sessionStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.token);
       sessionStorage.setItem("user", JSON.stringify(response.data.data));
       setUser(response.data.data);
 
