@@ -21,8 +21,8 @@ const schema = yup
   .required();
 
 const SaveCode = () => {
-  const { setOnSave, value } = useContext(editor);
-  const navigate = useNavigate()
+  const { setOnSave, value,language } = useContext(editor);
+  // const navigate = useNavigate()
   const code = value;
   const {
     register,
@@ -36,7 +36,7 @@ const SaveCode = () => {
     try {
       const response = await Axiosinstance.post(
         "/user/create-code",
-        { ...data, code }
+        { ...data, code ,language}
       );
       console.log(response)
       setOnSave(false)

@@ -56,7 +56,8 @@ useEffect(()=>{
         theam,
         toggleTheam,
         userCodeCount,
-        setUserCodeCount
+        setUserCodeCount,
+        language
       }}
     >
       {children}
