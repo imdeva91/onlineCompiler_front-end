@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import signUp from "../../assets/signup.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import "./Register.css"
@@ -8,6 +8,7 @@ import * as yup from "yup"
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import Axiosinstance from '../../axios_instance'
+import { editor } from '../../context/EditorContext'
 
 const schema = yup
   .object({
@@ -29,6 +30,7 @@ const schema = yup
   .required()
 
 const Register = () => {
+  const {theam} = useContext(editor)
   const navigat = useNavigate()
   const {
     register,
@@ -61,12 +63,16 @@ const Register = () => {
     }
   }
   return (
-    <div className='flex items-center w-[100%] register bg-red-50'>
+    <div className={`flex items-center w-[100%] register py-3  ${
+      theam === "dark" ? "bg-gray-950 text-white " : " bg-red-50"
+    }`}>
       <div>
         <img className='w-[50vw] py-1 ' src={signUp} alt="" />
       </div>
       <div className='w-[40vw] m-5' >
-        <form className='flex flex-col bg-gray-300 px-5 py-4 rounded' onSubmit={handleSubmit(onSubmit)}>
+        <form className={`flex flex-col  px-5 py-4 rounded  ${
+      theam === "dark" ? "bg-gray-700  " : " bg-gray-300"
+    } `} onSubmit={handleSubmit(onSubmit)}>
           <h1 className='text-center text-xl font-semibold'>Sign Up</h1>
           
             <label htmlFor="username">username *</label>

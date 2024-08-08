@@ -4,8 +4,10 @@ import Layout from './Layout/Layout'
 import Home from './pages/home/Home'
 import SignIn from './pages/signIn/SignIn'
 import SignUp from './pages/signUp/SignUp'
-import Profile from './pages/profile/Profile'
 import SearchPage from './pages/search/SearchPage'
+import MyAccount from './pages/myAccount/MyAccount'
+import Profile from './Components/profile/Profile'
+import Code from './pages/code/Code'
 
 const App = () => {
 
@@ -32,8 +34,21 @@ const router = createBrowserRouter([
         element:<SearchPage/>
       },
       {
-        path:"/profile",
-        element:<Profile/>
+        path:"/user",
+        element:<MyAccount/>,
+        children:[
+          {
+            path:"/user",
+            element:<Profile/>
+          },{
+            path:"code",
+            element:<Code/>
+          },
+          {
+            path:"post",
+            element:<Code/>
+          }
+        ]
       }
       
     ])

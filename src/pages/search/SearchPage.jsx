@@ -11,8 +11,7 @@ const SearchPage = () => {
     useEffect(()=>{
         const fetchCode = async()=>{
            try {
-            const respons = await Axiosinstance.get("/user/user-all-code")
-            console.log(respons)
+            const respons = await Axiosinstance.get("/user/all-public-code")
             setCodes(respons?.data.data)
            } catch (error) {
             toast.error(error.response.data.message, {
@@ -27,7 +26,7 @@ const SearchPage = () => {
     },[])
     // console.log(codes)
   return (
-    <div>
+    <div className='h-[100%]'>
       <Search/>
       <DisplayCode codes={codes} />
     </div>

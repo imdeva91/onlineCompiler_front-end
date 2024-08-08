@@ -4,6 +4,7 @@
     border: none;
     border-radius: 7px;
     outline: none;
+    color: black;
 }
 .login label{
     padding-left: 5px;

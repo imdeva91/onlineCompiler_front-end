@@ -6,10 +6,10 @@ import { editor } from "../../context/EditorContext";
 import profile from "../../assets/profile.svg";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { toast } from "react-toastify";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
-  const { user, setUser } = useContext(editor);
+  const { user, setUser, toggleTheam, theam } = useContext(editor);
   const navigate = useNavigate();
   const logOut = () => {
     sessionStorage.removeItem("user");
@@ -21,20 +21,37 @@ const Navbar = () => {
     navigate("/");
   };
   return (
-    <nav className="h-[80px] flex items-center justify-between shadow-sm px-10">
+    <nav
+      className={`${
+        theam === "dark"
+          ? "bg-slate-300 h-[80px]  flex items-center justify-between shadow-sm px-10"
+          : "h-[80px]  flex items-center justify-between shadow-sm px-10"
+      }`}
+    >
       <div className="py-3">
         <Link to="/" className="flex items-center gap-3">
-        <img className="w-[50px] h-[50px] " src={logo} alt="logo" />
-        <h1 className="font-semibold text-xl "><span className="bg-blue-600 text-white py-1 px-1 rounded">COD</span><span className="text-blue-600">ERS</span></h1>
+          <img className="w-[50px] h-[50px] " src={logo} alt="logo" />
+          <h1 className="font-semibold text-xl ">
+            <span className="bg-blue-600 text-white py-1 px-1 rounded">
+              COD
+            </span>
+            <span className="text-blue-600">ERS</span>
+          </h1>
         </Link>
       </div>
       <div className="flex items-center gap-10 ">
         <div className="flex items-center gap-5 border-r-2 px-10 ">
           <Link to="search">
-          <BsSearch className="cursor-pointer w-[35px] h-[35px] hover:bg-gray-200 px-2 py-2 
-           hover:rounded-[50%]" />
+            <BsSearch
+              className="cursor-pointer w-[35px] h-[35px] hover:bg-gray-200 px-2 py-2 
+           hover:rounded-[50%]"
+            />
           </Link>
-          <LuSunMoon className="cursor-pointer w-[35px] h-[35px] hover:bg-gray-200 px-2 py-2  hover:rounded-[50%]" />
+          <LuSunMoon
+            className="cursor-pointer w-[35px] h-[35px] hover:bg-gray-200 px-2 py-2
+            hover:rounded-[50%]"
+            onClick={() => toggleTheam()}
+          />
           <h1 className="cursor-pointer  hover:bg-gray-200 px-2 py-2  hover:rounded">
             CHALLENGES
           </h1>
@@ -53,7 +70,7 @@ const Navbar = () => {
                 anchor="bottom"
                 className="flex flex-col justify-center items-center gap-2 bg-slate-200 w-[140px] py-3"
               >
-                <Link to="/profile" className="hover:bg-slate-50 px-7 py-2">
+                <Link to="/user" className="hover:bg-slate-50 px-7 py-2">
                   My account
                 </Link>
                 <button
@@ -70,7 +87,9 @@ const Navbar = () => {
             <NavLink
               to="/signin"
               className={({ isActive }) =>
-                isActive ? "text-blue-500" : "text-black  hover:bg-gray-200 px-2 py-2  hover:rounded"
+                isActive
+                  ? "text-blue-500"
+                  : "text-black  hover:bg-gray-200 px-2 py-2  hover:rounded"
               }
             >
               LOGIN

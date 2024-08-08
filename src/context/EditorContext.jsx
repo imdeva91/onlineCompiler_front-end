@@ -5,7 +5,7 @@ import { executeCode } from "../api";
 export const editor = createContext();
 
 const EditorContext = ({ children }) => {
-  const [theam, setTheam] = useState("");
+  const [theam, setTheam] = useState("white");
   const [language, setLanguage] = useState("javascript");
   const [value, setValue] = useState(CODE_SNIPPETS["javascript"]);
   const [output, setOutput] = useState(null);
@@ -13,7 +13,12 @@ const EditorContext = ({ children }) => {
   const [onSave, setOnSave] = useState(false);
   const [user, setUser] = useState(null);
   const [tocken, setTocken] = useState("null");
+  const [userCodeCount,setUserCodeCount] = useState(0)
 
+  const toggleTheam =(prev)=>{
+    setTheam((prev)=> theam === "dark" ? "white":"dark")
+  }
+// console.log(user)
 
   const runCode = async () => {
     if (!value) return;
@@ -47,7 +52,11 @@ useEffect(()=>{
         onSave,
         user,
         setUser,
-        tocken
+        tocken,
+        theam,
+        toggleTheam,
+        userCodeCount,
+        setUserCodeCount
       }}
     >
       {children}
