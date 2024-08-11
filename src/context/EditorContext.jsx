@@ -53,6 +53,12 @@ useEffect(()=>{
 
 },[])
 
+const searchCode = async()=>{
+  const respo = await Axiosinstance.get(`/user/all-public-code?search=${"find"}`)
+  // console.log(respo.data)
+}
+useEffect(()=>{searchCode()},[])
+
   return (
     <editor.Provider
       value={{

@@ -4,28 +4,31 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { toast } from "react-toastify";
 import Loader from "../loader/Loader";
-import profile from "../../assets/profile.svg"
+import profile from "../../assets/profile.svg";
+import moment from "moment";
 
 const DisplayCode = ({ codes }) => {
   const [copy, setCopy] = useState(null);
-
+// console.log(codes)
   return (
     <div className="w-[100%] h-[100%] ">
       <div className="w-[60vw] flex flex-col gap-4 container m-auto py-10">
         {codes ? (
           codes.map((code) => {
             return (
-              <div
-                key={code._id}
-                className=""
-              >
+              <div key={code._id} className="">
                 <div className="h-[40px] w-full my-2 flex items-center gap-3">
                   <img className="h-[40px] w-[40px]" src={profile} alt="" />
-                  <h1>{code.user.fullname}</h1>
+                  <h1>
+                    {/* <p>{code.user.fullname}</p> */}
+                    <p>
+                      { moment(code.createdAt).startOf("hour").fromNow()
+                        // : moment(code.createdAt).startOf("hour").fromNow()
+                        }
+                    </p>
+                  </h1>
                 </div>
-                <div 
-                className="flex flex-col gap-5 bg-slate-300 px-5 py-3 rounded"
-                >
+                <div className="flex flex-col gap-5 bg-slate-300 px-5 py-3 rounded">
                   <div className="flex items-center justify-between">
                     <h1 className="font-semibold">{code.title} </h1>
                     <h1>{code.isPrivate ? "Private" : "Public"}</h1>

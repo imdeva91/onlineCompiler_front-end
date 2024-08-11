@@ -8,6 +8,7 @@ import * as yup from "yup"
 import { toast } from 'react-toastify'
 import Axiosinstance from '../../axios_instance'
 import { editor } from '../../context/EditorContext'
+import UsersAxiosinstance from '../../user_axios_instance'
 
 const schema = yup
   .object({
@@ -41,8 +42,10 @@ const Register = () => {
   })
   const onSubmit = async(data) => {
     try {
-      const response = await Axiosinstance.post('/user/sign-up',data)
+      const response = await Axiosinstance.post('user/sign-up',data)
+
       console.log(response)
+      sessionStorage.setItem("email",data.email)
       toast.success(response.data.message, {
         position: "top-right",
         autoClose: 5000,
@@ -52,11 +55,11 @@ const Register = () => {
 
     } catch (error) {
       console.log(error)
-      toast.error(error.response.data.message, {
-        position: "top-right",
-        autoClose: 5000,
+      // toast.error(error.response.data.message, {
+      //   position: "top-right",
+      //   autoClose: 5000,
        
-        });
+      //   });
       
     }
   }

@@ -15,7 +15,7 @@ const MyAccountNav = () => {
         PROFILE
       </NavLink>
       <NavLink
-        to="code"
+        to="/user/code"
         className={({ isActive }) =>
           isActive
             ? "border-b-2 border-orange-400"

@@ -9,6 +9,7 @@ import MyAccount from './pages/myAccount/MyAccount'
 import Profile from './Components/profile/Profile'
 import Code from './pages/code/Code'
 import { editor } from './context/EditorContext'
+import UserVerify from './pages/userVerify/UserVerify'
 
 const App = () => {
   const {fetchUserAllCode} = useContext(editor)
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         element:<SignUp/>
       },
       {
+        path:"/userVerify",
+        element:<UserVerify/>
+      },
+      {
         path:"/search",
         element:<SearchPage/>
       },
@@ -40,11 +45,9 @@ const router = createBrowserRouter([
         element:<MyAccount/>,
         children:[
           {
-            path:"/user",
+            index:true,
             element:<Profile/>,
-            // loader: async()=>{
-            //   fetchUserAllCode()
-            // }
+            // loader:{fetchUserAllCode}
           },{
             path:"code",
             element:<Code/>
